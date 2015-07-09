@@ -31,7 +31,7 @@
     "mocha": "^2.2.5"
   },
   "dependencies": {
-    "MD5": "^1.2.2",
+    "MD5": "^1.2.x",
     "ivoire": "1.x",
     "lodash": "3.x"
   }
