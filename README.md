@@ -5,6 +5,11 @@ Pick items out of a hat. A plugin for the
 [Ivoire](https://www.npmjs.com/package/ivoire) random number generator
 framework.
 
+- [Installing](#installing)
+- [Getting Started](#getting-started)
+- [Reference](#reference)
+- [Acknowledgements](#acknowledgements)
+
 
 Installing
 ----------
@@ -69,91 +74,106 @@ Reference
 `ivoire-one-of` adds some methods to the `Ivoire` prototype object, making them
 available on all `Ivoire` instances.
 
+- [`#one_of()`](#one-of)—make a hat for picking items out of it
+- [`one.cycling()`](#onecycling)—cycle through the items and repeat
+- [`one.stopping()`](#onestopping)—iterate through and repeat the last
+- [`one.randomly()`](#onerandomly)—pick randomly without repeating
+- [`one.truly_at_random()`](#onetruly_at_random)—pick randomly, with repeats
+- [`one.in_random_order()`](#onein_random_order)—cycle through the items in random order and repeat
 
-### Ivoire.prototype.one_of(item1, item2, item3...)
 
-Retun an object with wethods for picking items from the provided arguments. The
-object is cached based on the stringification of the sequence of arguments.
+### #one_of()
 
-```
-var Ivoire = require('ivoire-one-of');
-var ivoire = new Ivoire();
+#### Syntax
 
-// The returned object will be cached:
-var one = ivoire.one_of('red', 'blue', 'green', 'orange');
-one.cycling() === 'red';
+    ivoire.one_of(item1[, item2, item3...])
 
-// When we need the same sequence again (from the same Ivoire instance), the
-// same invocation retrieves the cached object and its state.
-var another = ivoire.one_of('red', 'blue', 'green', 'orange');
-another.cycling() === 'blue';
+#### Usage
 
-// If we work off of another Ivoire instance, we get a new cycle.
-var ivoire_2 = new Ivoire();
-var one_more = ivoire_2.one_of('red', 'blue', 'green', 'orange');
-one_more.cycling() === 'red';
-```
+Return an object with methods for picking items from the provided
+arguments. The object is cached based on the stringification of the sequence of
+arguments.
+
+    var Ivoire = require('ivoire-one-of');
+    var ivoire = new Ivoire();
+
+    // The returned object will be cached:
+    var one = ivoire.one_of('red', 'blue', 'green', 'orange');
+    one.cycling() === 'red';
+
+    // When we need the same sequence again (from the same Ivoire instance), the
+    // same invocation retrieves the cached object and its state.
+    var another = ivoire.one_of('red', 'blue', 'green', 'orange');
+    another.cycling() === 'blue';
+
+    // If we work off of another Ivoire instance, we get a new cycle.
+    var ivoire_2 = new Ivoire();
+    var one_more = ivoire_2.one_of('red', 'blue', 'green', 'orange');
+    one_more.cycling() === 'red';
+
 
 The object returned by `#one_of()` has the following interface:
 
 #### one.cycling()
 
+#### Usage
+
 Cycle through the sequence, returning each item in order and wrapping back to
 the beginning.
 
-```
-var ivoire = new require('ivoire-one-of');
-var one = ivoire.one_of('red', 'blue', 'green', 'orange');
-one.cycling();
-```
+
+    var ivoire = new require('ivoire-one-of');
+    var one = ivoire.one_of('red', 'blue', 'green', 'orange');
+    one.cycling();
+
 
 #### one.stopping()
+
+#### Usage
 
 Cycle through the sequence, returning each item in order until we reach the end
 of the sequence. Continue to return the last item forevermore after.
 
-```
-var ivoire = new require('ivoire-one-of');
-var one = ivoire.one_of('red', 'blue', 'green', 'orange');
-one.cycling();
-```
+    var ivoire = new require('ivoire-one-of');
+    var one = ivoire.one_of('red', 'blue', 'green', 'orange');
+    one.cycling();
 
 
 #### one.randomly()
 
+#### Usage
+
 Return a random item from the sequence, never returning the same item twice in
 a row.
 
-```
-var ivoire = new require('ivoire-one-of');
-var one = ivoire.one_of('red', 'blue', 'green', 'orange');
-one.randomly();
-```
+    var ivoire = new require('ivoire-one-of');
+    var one = ivoire.one_of('red', 'blue', 'green', 'orange');
+    one.randomly();
 
 
 #### one.truly_at_random()
 
+#### Usage
+
 Return a random item from the sequence without filtering repeats. May return
 the same item twice or more times in a row!
 
-```
-var ivoire = new require('ivoire-one-of');
-var one = ivoire.one_of('red', 'blue', 'green', 'orange');
-one.truly_at_random();
-```
+    var ivoire = new require('ivoire-one-of');
+    var one = ivoire.one_of('red', 'blue', 'green', 'orange');
+    one.truly_at_random();
 
 
 #### one.in_random_order()
+
+#### Usage
 
 Shuffle the sequence of items and iterate through it, one at a time, wrapping
 around to the beginning of the shuffled sequence. The shuffled order is
 maintained throughout.
 
-```
-var ivoire = new require('ivoire-one-of');
-var one = ivoire.one_of('red', 'blue', 'green', 'orange');
-one.in_random_order();
-```
+    var ivoire = new require('ivoire-one-of');
+    var one = ivoire.one_of('red', 'blue', 'green', 'orange');
+    one.in_random_order();
 
 
 Acknowledgements
