@@ -5,6 +5,8 @@ Pick items out of a hat. A plugin for the
 [Ivoire](https://www.npmjs.com/package/ivoire) random number generator
 framework.
 
+[![Build Status](https://travis-ci.org/dreamhorn/ivoire-one-of.svg)](https://travis-ci.org/dreamhorn/ivoire-one-of)
+
 - [Installing](#installing)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
